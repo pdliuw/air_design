@@ -1,4 +1,3 @@
-import 'package:air_design/src/config/text_config.dart';
 import 'package:flutter/material.dart';
 
 ///

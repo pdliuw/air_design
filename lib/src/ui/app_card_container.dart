@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-/// CardContainer
-class CardContainer extends StatefulWidget {
+/// AppCardContainer
+class AppCardContainer extends StatefulWidget {
   Widget _child;
-  CardContainer({
+  AppCardContainer({
     @required Widget child,
   }) {
     _child = child ?? Container();
@@ -11,12 +11,12 @@ class CardContainer extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return _CardContainerState();
+    return _AppCardContainerState();
   }
 }
 
 /// _CardContainerState
-class _CardContainerState extends State<CardContainer> {
+class _AppCardContainerState extends State<AppCardContainer> {
   @override
   Widget build(BuildContext context) {
     return Stack(

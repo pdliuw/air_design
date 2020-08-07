@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-/// StateButton
-class StateButton extends StatefulWidget {
+/// AppStateButton
+class AppStateButton extends StatefulWidget {
   Widget _child;
   VoidCallback _onPressed;
   bool _isLoading;
@@ -9,7 +9,7 @@ class StateButton extends StatefulWidget {
   double _height;
   double _width;
   Duration _duration;
-  StateButton({
+  AppStateButton({
     @required Widget child,
     bool isLoading = false,
     VoidCallback onPressed,
@@ -33,7 +33,7 @@ class StateButton extends StatefulWidget {
 }
 
 /// _StateButtonState
-class _StateButtonState extends State<StateButton> {
+class _StateButtonState extends State<AppStateButton> {
   ///
   @override
   Widget build(BuildContext context) {
