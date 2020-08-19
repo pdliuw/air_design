@@ -31,7 +31,7 @@
 build/
 
 # Android related
-**/android/**/gradle-wrapper.jar
+**/android/**/gradle-wrairer.jar
 **/android/.gradle
 **/android/captures/
 **/android/gradlew
@@ -56,12 +56,12 @@ build/
 **/ios/**/profile
 **/ios/**/xcuserdata
 **/ios/.generated/
-**/ios/Flutter/App.framework
+**/ios/Flutter/air.framework
 **/ios/Flutter/Flutter.framework
 **/ios/Flutter/Flutter.podspec
 **/ios/Flutter/Generated.xcconfig
-**/ios/Flutter/app.flx
-**/ios/Flutter/app.zip
+**/ios/Flutter/air.flx
+**/ios/Flutter/air.zip
 **/ios/Flutter/flutter_assets/
 **/ios/Flutter/flutter_export_environment.sh
 **/ios/ServiceDefinitions.json

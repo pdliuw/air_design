@@ -14,6 +14,9 @@ dependencies:
   # amap plugin support: map ,location, search, nav
   ai_amap: ^1.0.0
 
+  # file package.
+  shared_preferences: ^0.5.8
+
   # route package.
   airoute: ^0.3.2
 
@@ -27,6 +30,13 @@ dependencies:
   # vector icons include:
   # AntDesign,FontAwesome,Foundation,MaterialCommunityIcons,MaterialIcons,FontAwesome......
   flutter_vector_icons: ^0.2.1
+
+  # HTTP
+  dio: 3.0.10
+
+  # Refresh package.
+  flutter_easyrefresh: ^2.1.5
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
