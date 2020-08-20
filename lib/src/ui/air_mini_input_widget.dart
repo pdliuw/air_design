@@ -7,33 +7,40 @@ import 'package:flutter/material.dart';
 class AirMiniInputWidget extends StatefulWidget {
   bool _enable;
   ValueChanged<String> _onChanged;
-  String _value;
   String _suffixText;
   String _hintText;
+  double _maxHeight;
+  double _maxWidth;
+  final TextEditingController _editingController =
+      TextEditingController.fromValue(TextEditingValue(text: ""));
   AirMiniInputWidget.defaultStyle({
     bool enable = true,
     ValueChanged<String> onChanged,
     String hintText = "请输入",
     String value = "",
     String suffixText = "",
+    double maxHeight = 35,
+    double maxWidth = 200,
   }) {
     _enable = enable;
     _onChanged = onChanged ?? (String value) {};
     _hintText = hintText;
-    _value = value;
     _suffixText = suffixText;
+    _maxHeight = maxHeight;
+    _maxWidth = maxWidth;
+    _editingController.text = value;
+    _editingController.selection = TextSelection.fromPosition(TextPosition(
+        affinity: TextAffinity.downstream, offset: '$value'.length));
   }
+
   @override
-  _airMiniInputWidgetState createState() => _airMiniInputWidgetState();
+  _AirMiniInputWidgetState createState() => _AirMiniInputWidgetState();
 }
 
-class _airMiniInputWidgetState extends State<AirMiniInputWidget> {
-  TextEditingController _editingController;
+class _AirMiniInputWidgetState extends State<AirMiniInputWidget> {
   @override
   void initState() {
     super.initState();
-    _editingController =
-        TextEditingController.fromValue(TextEditingValue(text: widget._value));
   }
 
   @override
@@ -42,9 +49,10 @@ class _airMiniInputWidgetState extends State<AirMiniInputWidget> {
       child: Row(
         children: <Widget>[
           ConstrainedBox(
-            constraints: BoxConstraints(maxHeight: 35, maxWidth: 200),
+            constraints: BoxConstraints(
+                maxHeight: widget._maxHeight, maxWidth: widget._maxWidth),
             child: TextField(
-              controller: _editingController,
+              controller: widget._editingController,
               style: TextStyle().copyWith(
                 fontSize: 12,
               ),

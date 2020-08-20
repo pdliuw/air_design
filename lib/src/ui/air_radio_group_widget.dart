@@ -1,85 +1,70 @@
 import 'package:flutter/material.dart';
 
-typedef airRadioGroupCallback = Function(bool checked);
-
 ///
 /// AirRadioGroupWidget
-
 class AirRadioGroupWidget extends StatefulWidget {
-  bool _checked;
-  airRadioGroupCallback _radioGroupCallback;
-
+  List _list;
+  IndexedWidgetBuilder _labelWidgetBuilder;
+  ValueChanged<int> _onChanged;
+  bool _isVertical;
   AirRadioGroupWidget.defaultStyle({
-    @required bool checked,
-    @required airRadioGroupCallback radioGroupCallback,
+    @required List list,
+    @required IndexedWidgetBuilder labelBuilder,
+    ValueChanged<int> onChanged,
+    bool vertical = true,
   }) {
-    _checked = checked;
-    _radioGroupCallback = radioGroupCallback;
+    _list = list ?? [];
+    _labelWidgetBuilder = labelBuilder;
+    _onChanged = onChanged ?? (index) {};
+    _isVertical = vertical;
   }
   @override
-  State<StatefulWidget> createState() {
-    return _RadioGroupState();
-  }
+  _RadioGroupWidgetState createState() => _RadioGroupWidgetState();
 }
 
-///
-/// _RadioGroupState
-class _RadioGroupState extends State<AirRadioGroupWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        GestureDetector(
+class _RadioGroupWidgetState extends State<AirRadioGroupWidget> {
+  int groupValue = 0;
+
+  _getContentWidget() {
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: widget._list.length,
+      scrollDirection: widget._isVertical ? Axis.vertical : Axis.horizontal,
+      physics: BouncingScrollPhysics(),
+      itemBuilder: (context, index) {
+        return GestureDetector(
           onTap: () {
             setState(() {
-              widget._checked = true;
-              _callback();
+              groupValue = index;
+              widget._onChanged(index);
             });
           },
-          child: Row(
-            children: <Widget>[
-              Radio(
-                value: true,
-                groupValue: widget._checked,
-                onChanged: (bool value) {
-                  setState(() {
-                    widget._checked = value;
-                    _callback();
-                  });
-                },
-              ),
-              Text("正常"),
-            ],
+          child: RawChip(
+            backgroundColor: Colors.white,
+            label: widget._labelWidgetBuilder(context, index),
+            padding: EdgeInsets.zero,
+            labelPadding: EdgeInsets.only(
+              right: 5,
+            ),
+            avatar: Radio(
+              value: index,
+              groupValue: groupValue,
+              onChanged: (index) {},
+            ),
           ),
-        ),
-        GestureDetector(
-          onTap: () {
-            setState(() {
-              widget._checked = false;
-              _callback();
-            });
-          },
-          child: Row(
-            children: <Widget>[
-              Radio(
-                value: false,
-                groupValue: widget._checked,
-                onChanged: (bool value) {
-                  setState(() {
-                    widget._checked = value;
-                    _callback();
-                  });
-                },
-              ),
-              Text("异常"),
-            ],
-          ),
-        ),
-      ],
+        );
+      },
     );
   }
 
-  void _callback() {
-    widget._radioGroupCallback(widget._checked);
+  @override
+  Widget build(BuildContext context) {
+    return widget._isVertical
+        ? _getContentWidget()
+        : Container(
+//            width: 200,
+            height: 48,
+            child: _getContentWidget(),
+          );
   }
 }
