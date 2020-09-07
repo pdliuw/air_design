@@ -29,8 +29,11 @@ class AirMiniInputWidget extends StatefulWidget {
     _maxHeight = maxHeight;
     _maxWidth = maxWidth;
     _editingController.text = value;
-    _editingController.selection = TextSelection.fromPosition(TextPosition(
-        affinity: TextAffinity.downstream, offset: '$value'.length));
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _editingController.selection = TextSelection(
+          baseOffset: _editingController.text.length,
+          extentOffset: _editingController.text.length);
+    });
   }
 
   @override
