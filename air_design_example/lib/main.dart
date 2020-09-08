@@ -1,3 +1,4 @@
+import 'package:air_design_example/test/test_main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:air_design/air_design.dart';
 
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return Airoute.createMaterialApp(
       title: 'air design example',
       theme: ThemeData(
         // This is the theme of your application.
@@ -54,14 +55,9 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+      return TestMainPage();
+    }));
   }
 
   @override
@@ -108,6 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',

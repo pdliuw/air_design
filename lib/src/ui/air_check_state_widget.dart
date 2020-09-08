@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 ///
 /// AirCheckStateWidget
@@ -31,19 +32,17 @@ class _CheckState extends State<AirCheckStateWidget> {
               ? AnimatedOpacity(
                   duration: Duration(seconds: 1),
                   opacity: widget._checked ? 1 : 0,
-                  child: Image.asset(
-                    "assets/images/select_check_icon.png",
-                    width: 30,
-                    height: 30,
+                  child: Icon(
+                    FontAwesome.check_circle,
+                    color: Theme.of(context).primaryColor,
                   ),
                 )
               : AnimatedOpacity(
                   duration: Duration(seconds: 1),
                   opacity: widget._checked ? 0 : 1,
-                  child: Image.asset(
-                    "assets/images/norm_select_check_icon.png",
-                    width: 30,
-                    height: 30,
+                  child: Icon(
+                    FontAwesome.check_circle,
+                    color: Colors.grey,
                   ),
                 )
         ],

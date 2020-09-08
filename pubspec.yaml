@@ -21,7 +21,7 @@ dependencies:
   airoute: ^0.3.5
 
   # barcode plugin
-  ai_barcode: ^1.0.5
+  ai_barcode: ^1.1.3
 
   # awesome message
   ai_awesome_message: ^0.3.0

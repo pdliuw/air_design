@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 typedef CheckboxListViewItemChanged = void Function(int index, bool checked);
 
 ///
-/// AppCheckBoxListViewWidget
+/// AirCheckBoxListViewWidget
 /// [CheckboxListViewItemChanged]
 class AirCheckBoxListViewWidget extends StatefulWidget {
   List _list;

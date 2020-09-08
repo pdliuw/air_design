@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 ///
 /// AirMiniInputWidget
@@ -13,6 +14,8 @@ class AirMiniInputWidget extends StatefulWidget {
   double _maxWidth;
   final TextEditingController _editingController =
       TextEditingController.fromValue(TextEditingValue(text: ""));
+  List<TextInputFormatter> _inputFormatter;
+  TextInputType _inputType;
   AirMiniInputWidget.defaultStyle({
     bool enable = true,
     ValueChanged<String> onChanged,
@@ -21,7 +24,11 @@ class AirMiniInputWidget extends StatefulWidget {
     String suffixText = "",
     double maxHeight = 35,
     double maxWidth = 200,
+    List<TextInputFormatter> inputFormatter,
+    TextInputType inputType,
   }) {
+    _inputFormatter = inputFormatter;
+    _inputType = inputType;
     _enable = enable;
     _onChanged = onChanged ?? (String value) {};
     _hintText = hintText;
@@ -59,6 +66,8 @@ class _AirMiniInputWidgetState extends State<AirMiniInputWidget> {
               style: TextStyle().copyWith(
                 fontSize: 12,
               ),
+              inputFormatters: widget._inputFormatter,
+              keyboardType: widget._inputType,
               onChanged: widget._onChanged,
               decoration: InputDecoration(
                 enabled: widget._enable,

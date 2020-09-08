@@ -2,6 +2,7 @@ library air_design;
 
 ///
 /// export
+/// --ui-start--
 export 'src/amap/air_amap_location_address_widget.dart';
 export 'src/ui/air_app_bar_factory.dart';
 export 'src/ui/air_badge_widget.dart';
@@ -50,7 +51,30 @@ export 'src/ui/air_text_widget.dart';
 export 'src/ui/air_transport_mode_icon_widget.dart';
 export 'src/ui/air_two_level_drop_down_widget.dart';
 export 'src/ui/air_view_page_widget.dart';
+export 'src/ui/air_check_all_with_action_widget.dart';
+export 'src/ui/air_check_box_list_view_widget.dart';
+export 'src/ui/air_check_box_widget.dart';
+export 'src/ui/air_check_state_widget.dart';
+export 'src/ui/air_mini_input_selected_widget.dart';
+export 'src/ui/air_mini_input_widget.dart';
+export 'src/ui/air_multiple_line_with_label_widget.dart';
+export 'src/ui/air_radio_group_plus_widget.dart';
+export 'src/ui/air_select_start_and_end_time_widget.dart';
+export 'src/ui/air_with_empty_status_widget.dart';
 
+///border
+export 'src/ui/air_border_widget.dart';
+
+/// --ui-end--
+
+/// --helper-start--
+export 'src/helper/air_picker_time_helper.dart';
+
+/// --helper-end--
+/// --route-start--
+export 'package:airoute/airoute.dart';
+
+/// --route-end--
 ///
 /// Refresh
 export 'src/refresh/air_custom_refresh_list_view_widget.dart';
