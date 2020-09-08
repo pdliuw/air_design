@@ -145,8 +145,8 @@ class _CustomRefresh extends State<AirCustomRefresh> {
         },
         child: Center(
           child: Container(
-            width: 100,
-            height: 100,
+            width: 200,
+            height: 200,
             child: Column(
               children: <Widget>[
                 Container(
@@ -171,8 +171,29 @@ class _CustomRefresh extends State<AirCustomRefresh> {
       enableControlFinishLoad: widget.enableControlFinishLoad,
       taskIndependence: widget.taskIndependence,
       scrollController: widget.scrollController,
-      header: widget.header,
-      footer: widget.footer,
+      header: widget.header ??
+          ClassicalHeader(
+            refreshText: "下拉刷新",
+            refreshedText: "刷新完成",
+            refreshingText: "刷新中",
+            refreshFailedText: "刷新失败",
+            refreshReadyText: "释放刷新",
+            textColor: Colors.black,
+            infoColor: Colors.black,
+            showInfo: false,
+          ),
+      footer: widget.footer ??
+          ClassicalFooter(
+            loadText: "上拉加载更多",
+            loadReadyText: "释放加载更多",
+            loadingText: "加载中",
+            loadedText: "加载完成",
+            loadFailedText: "加载失败",
+            noMoreText: "没有更多数据",
+            infoColor: Colors.black,
+            textColor: Colors.black,
+            showInfo: false,
+          ),
       firstRefresh: widget.firstRefresh,
       firstRefreshWidget: widget.firstRefreshWidget,
       headerIndex: widget.headerIndex,

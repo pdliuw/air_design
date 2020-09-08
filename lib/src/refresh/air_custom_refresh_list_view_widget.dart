@@ -8,7 +8,7 @@ import 'air_refresh_abstract_model.dart';
 typedef CustomRefreshCallback = void Function();
 
 ///
-/// AirCustomRefreshListViewWidget
+/// AppCustomRefreshListViewWidget
 /// [AirRefreshAbstractModel]
 /// [AirCustomRefreshListViewController]
 /// [AirRefreshCommonModel]
@@ -17,10 +17,10 @@ class AirCustomRefreshListViewWidget<T extends AirRefreshAbstractModel>
   List<dynamic> _list;
   T _refreshModel;
   CustomRefreshCallback _callback;
-  AirCustomRefreshListViewController _controller;
+  AppCustomRefreshListViewController _controller;
   IndexedWidgetBuilder _indexedWidgetBuilder;
   AirCustomRefreshListViewWidget.defaultStyle({
-    @required AirCustomRefreshListViewController controller,
+    @required AppCustomRefreshListViewController controller,
     @required List list,
     @required T refreshModel,
     @required CustomRefreshCallback callback,
@@ -94,6 +94,10 @@ class _AirCustomRefreshListViewWidgetState
     return list.isEmpty;
   }
 
+  _callRequest() {
+    widget._callback();
+  }
+
   ///
   /// Refresh/LoadMore Failure
   _callRequestFailureState() {
@@ -134,11 +138,13 @@ class _AirCustomRefreshListViewWidgetState
       page: page,
       size: size,
       refreshSuccessful: (bool noMore) {
+        bool noMore = total <= page * size;
         //刷新成功
         _easyRefreshController.finishRefresh(
           success: true,
           noMore: false,
         );
+        _easyRefreshController.finishLoad(success: true, noMore: noMore);
       },
       loadMoreSuccessful: (bool noMore) {
         //加载更多
@@ -152,8 +158,8 @@ class _AirCustomRefreshListViewWidgetState
 }
 
 ///
-/// AirCustomRefreshListViewController
-class AirCustomRefreshListViewController {
+/// AppCustomRefreshListViewController
+class AppCustomRefreshListViewController {
   _AirCustomRefreshListViewWidgetState _state;
 
   init({
@@ -161,6 +167,10 @@ class AirCustomRefreshListViewController {
   }) {
     assert(state != null);
     _state = state;
+  }
+
+  callRequest() {
+    _state._callRequest();
   }
 
   ///
