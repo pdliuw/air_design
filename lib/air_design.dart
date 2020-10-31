@@ -62,6 +62,9 @@ export 'src/ui/air_radio_group_plus_widget.dart';
 export 'src/ui/air_select_start_and_end_time_widget.dart';
 export 'src/ui/air_with_empty_status_widget.dart';
 
+///divider
+export 'src/ui/air_divider_without_line_widget.dart';
+
 ///border
 export 'src/ui/air_border_widget.dart';
 

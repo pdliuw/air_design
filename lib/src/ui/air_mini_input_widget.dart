@@ -12,7 +12,7 @@ class AirMiniInputWidget extends StatefulWidget {
   String _hintText;
   double _maxHeight;
   double _maxWidth;
-  final TextEditingController _editingController =
+  TextEditingController _editingController =
       TextEditingController.fromValue(TextEditingValue(text: ""));
   List<TextInputFormatter> _inputFormatter;
   TextInputType _inputType;
@@ -26,15 +26,22 @@ class AirMiniInputWidget extends StatefulWidget {
     double maxWidth = 200,
     List<TextInputFormatter> inputFormatter,
     TextInputType inputType,
+    TextEditingController textEditingController,
   }) {
     _inputFormatter = inputFormatter;
     _inputType = inputType;
     _enable = enable;
-    _onChanged = onChanged ?? (String value) {};
-    _hintText = hintText;
+    _onChanged = onChanged ??
+        (String value) {
+          print(value);
+        };
+    _hintText = enable ? hintText : "";
     _suffixText = suffixText;
     _maxHeight = maxHeight;
     _maxWidth = maxWidth;
+    if (textEditingController != null) {
+      _editingController = textEditingController;
+    }
     _editingController.text = value;
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _editingController.selection = TextSelection(
