@@ -1,6 +1,6 @@
 name: air_design
-description: A new air design Flutter package.
-version: 0.0.2
+description: flutter widget design library.
+version: 2.0.0
 homepage: https://pdliuw.github.io/
 repository: https://github.com/pdliuw/air_design
 
@@ -10,32 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  # amap plugin support: map ,location, search, nav
-  ai_amap: ^1.0.0
-
-  # file package.
-  shared_preferences: ^0.5.8
-
-  # route package.
-  airoute: ^0.3.5
-
-  # barcode plugin
-  ai_barcode: ^1.1.3
-
-  # awesome message
-  ai_awesome_message: ^0.3.0
-
-  permission_handler: ^5.0.1+1
-  # vector icons include:
-  # AntDesign,FontAwesome,Foundation,MaterialCommunityIcons,MaterialIcons,FontAwesome......
-  flutter_vector_icons: ^0.2.1
-
-  # HTTP
-  dio: 3.0.10
-
-  # Refresh package.
-  flutter_easyrefresh: ^2.1.5
 
 dev_dependencies:
   flutter_test:

@@ -9,6 +9,20 @@ class TestMainPage extends StatefulWidget {
 }
 
 class _TestMainPageState extends State<TestMainPage> {
+  List _list = [
+    {"name": "name"},
+    {"name": "name"},
+    {"name": "name"},
+    {"name": "name"},
+    {"name": "name"},
+    {"name": "name"},
+    {"name": "name"},
+    {"name": "name"},
+    {"name": "name"},
+    {"name": "name"},
+    {"name": "name"},
+  ];
+
   var _data = {
     "startTime": "",
     "endTime": "",
@@ -19,39 +33,55 @@ class _TestMainPageState extends State<TestMainPage> {
       appBar: AppBar(
         title: Text("测试"),
       ),
-      body: Column(
-        children: [
-          AirBorderWidget.defaultStyle(
-            padding: 0,
-            child: AirSelectStartAndEndTimeWidget(
-              mTitle: "选择时间",
-              mHideTxt: "请选择时间",
-              startTimeValue: "${_data['startTime']}",
-              endTimeValue: "${_data['endTime']}",
-              onTapStartTime: () {
-                AirPickerTimeHelper.showCupertinoDatePicker(
-                    context: context,
-                    changed: (year, month, day, hour, minute, second) {},
-                    onResult: (String result) {
-                      setState(() {
-                        _data['startTime'] = result;
-                      });
-                    });
-              },
-              onTapEndTime: () {
-                AirPickerTimeHelper.showCupertinoDatePicker(
-                    context: context,
-                    changed: (year, month, day, hour, minute, second) {},
-                    onResult: (String result) {
-                      setState(() {
-                        _data['endTime'] = result;
-                      });
-                    });
-              },
+      body: ListView.builder(
+        itemCount: _list.length,
+        itemBuilder: (context, index) {
+          dynamic item = _list[index];
+          return AppCardElevatedStyleWidget.defaultStyle(
+            onTap: () {},
+            child: Column(
+              children: [
+                ListTile(
+                  title: AppTextBodyText2Widget.defaultStyle("${item['name']}"),
+                ),
+              ],
             ),
-          ),
-        ],
+          );
+        },
       ),
+//      body: Column(
+//        children: [
+//          AirBorderWidget.defaultStyle(
+//            padding: 0,
+//            child: AirSelectStartAndEndTimeWidget(
+//              mTitle: "选择时间",
+//              mHideTxt: "请选择时间",
+//              startTimeValue: "${_data['startTime']}",
+//              endTimeValue: "${_data['endTime']}",
+//              onTapStartTime: () {
+//                AirPickerTimeHelper.showCupertinoDatePicker(
+//                    context: context,
+//                    changed: (year, month, day, hour, minute, second) {},
+//                    onResult: (String result) {
+//                      setState(() {
+//                        _data['startTime'] = result;
+//                      });
+//                    });
+//              },
+//              onTapEndTime: () {
+//                AirPickerTimeHelper.showCupertinoDatePicker(
+//                    context: context,
+//                    changed: (year, month, day, hour, minute, second) {},
+//                    onResult: (String result) {
+//                      setState(() {
+//                        _data['endTime'] = result;
+//                      });
+//                    });
+//              },
+//            ),
+//          ),
+//        ],
+//      ),
     );
   }
 }
