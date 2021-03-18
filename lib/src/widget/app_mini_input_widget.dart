@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:air_design/src/widget/text/string/air_string_split_factory.dart';
+import 'package:air_design/src/widget/text/string/app_string_split_factory.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
