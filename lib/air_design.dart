@@ -17,6 +17,7 @@ export 'src/widget/text/app_text_body_text1_widget.dart';
 export 'src/widget/text/app_text_body_text2_widget.dart';
 export 'src/widget/text/app_text_button_widget.dart';
 export 'src/widget/text/string/app_string_split_factory.dart';
+
 ///
 /// config
 export 'src/config/app_config.dart';
