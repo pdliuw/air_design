@@ -1,3 +1,7 @@
+## [2.0.0]
+
+* improve structure
+
 ## [0.0.2]
 
 * update input widget
