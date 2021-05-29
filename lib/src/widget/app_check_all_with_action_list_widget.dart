@@ -6,13 +6,13 @@ import 'app_expanded_button_widget.dart';
 ///
 /// AppCheckAllWithActionListWidget
 class AppCheckAllWithActionListWidget extends StatefulWidget {
-  final List list;
+  late final List list;
   final String checkedName;
   final List<String> actionNameList;
-  final List<VoidCallback> onTapList;
-  final ValueChanged<bool> onChanged;
+  final List<VoidCallback>? onTapList;
+  final ValueChanged<bool>? onChanged;
   AppCheckAllWithActionListWidget.defaultStyle({
-    @required this.list,
+    required this.list,
     this.checkedName = "checked",
     this.actionNameList = const [
       "签收",
@@ -45,10 +45,10 @@ class _AppCheckAllWithActionListWidgetState
                   Checkbox(
                     value: _checkedAll(),
                     onChanged: (checkedAll) {
-                      _updateCheckAll(checkedAll);
+                      _updateCheckAll(checkedAll!);
                     },
                   ),
-                  AppTextButtonWidget.defaultStyle("全选"),
+                  AppTextButtonWidget.defaultStyle(data: "全选"),
                 ],
               ),
             ),
@@ -63,7 +63,7 @@ class _AppCheckAllWithActionListWidgetState
   }
 
   _getActionListWidget() {
-    if (widget.actionNameList.length != widget.onTapList.length) {
+    if (widget.actionNameList.length != widget.onTapList!.length) {
       return Container();
     }
 
@@ -74,7 +74,7 @@ class _AppCheckAllWithActionListWidgetState
         Expanded(
           flex: 3,
           child: AppExpandedButtonWidget.defaultStyle(
-            onTap: _actionEnable() ? widget.onTapList[i] : null,
+            onTap: _actionEnable() ? widget.onTapList![i] : null,
             text: "${widget.actionNameList[i]}",
             leftFlex: 0,
             rightFlex: 0,
@@ -121,7 +121,7 @@ class _AppCheckAllWithActionListWidgetState
         element[widget.checkedName] = checkedAll;
       });
       if (widget.onChanged != null) {
-        widget.onChanged(checkedAll);
+        widget.onChanged!(checkedAll);
       }
     });
   }

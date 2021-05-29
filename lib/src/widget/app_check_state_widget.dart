@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 ///
 /// AppCheckStateWidget
 class AppCheckStateWidget extends StatefulWidget {
-  bool _checked;
-  bool _animated;
+  late bool _checked;
+  late bool _animated;
   AppCheckStateWidget.defaultStyle({
     bool checked = false,
     bool animated = true,

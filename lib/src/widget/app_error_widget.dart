@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 ///
 /// App Error Widget
 class AppErrorWidget extends StatefulWidget {
-  FlutterErrorDetails _flutterErrorDetails;
+  late FlutterErrorDetails _flutterErrorDetails;
   AppErrorWidget.defaultStyle({
-    @required FlutterErrorDetails flutterErrorDetails,
+    required FlutterErrorDetails flutterErrorDetails,
   }) {
     _flutterErrorDetails = flutterErrorDetails;
   }

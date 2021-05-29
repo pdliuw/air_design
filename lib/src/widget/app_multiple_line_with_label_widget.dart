@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 
 ///
 /// AppMultipleLineWithLabelWidget
+// ignore: must_be_immutable
 class AppMultipleLineWithLabelWidget extends StatefulWidget {
-  Widget _labelWidget;
-  Widget _contentLabel;
+  late Widget _labelWidget;
+  late Widget _contentLabel;
   AppMultipleLineWithLabelWidget.defaultStyle({
-    @required String labelName,
-    @required String content,
+    required String labelName,
+    required String content,
   }) {
-    _labelWidget = AppTextBodyText1Widget.defaultStyle(labelName ?? "");
-    _contentLabel = AppTextBodyText1Widget.defaultStyle(content ?? "");
+    _labelWidget = AppTextBodyText1Widget.defaultStyle(data: labelName ?? "");
+    _contentLabel = AppTextBodyText1Widget.defaultStyle(data: content ?? "");
   }
   @override
   _AppMultipleLineWithLabelWidgetState createState() =>

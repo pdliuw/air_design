@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 
 ///
 /// AppTextContainerWidget
+// ignore: must_be_immutable
 class AppTextContainerWidget extends StatelessWidget {
-  String _data;
+  late String _data;
   AppTextContainerWidget.defaultStyle({
-    String data,
+    required String data,
   }) {
     _data = data;
   }
@@ -19,7 +20,7 @@ class AppTextContainerWidget extends StatelessWidget {
         color: Colors.blue,
       ),
       child: AppTextBodyText2Widget.defaultStyle(
-        _data,
+        data: _data,
       ),
     );
   }

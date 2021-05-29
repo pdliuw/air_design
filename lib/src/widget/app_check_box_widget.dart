@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 ///
 /// AppCheckBoxWidget
 class AppCheckBoxWidget extends StatefulWidget {
-  String _content;
-  bool _value;
-  ValueChanged<bool> _onChanged;
+  String? _content;
+  bool? _value;
+  ValueChanged<bool>? _onChanged;
   AppCheckBoxWidget.defaultStyle({
-    bool value = false,
-    String content = '',
-    ValueChanged<bool> onChanged,
+    bool? value = false,
+    String? content = '',
+    ValueChanged<bool>? onChanged,
   }) {
     _value = value;
     _content = content;
@@ -25,7 +25,7 @@ class _AppCheckBoxWidgetState extends State<AppCheckBoxWidget> {
   @override
   void initState() {
     super.initState();
-    _value = widget._value;
+    _value = widget._value!;
   }
 
   @override
@@ -35,12 +35,14 @@ class _AppCheckBoxWidgetState extends State<AppCheckBoxWidget> {
         IconButton(
             icon: _getIcon(),
             onPressed: () {
-              _value = !_value;
+              _value = _value;
               setState(() {
-                widget._onChanged(_value);
+                widget._onChanged!(_value!);
               });
             }),
-        AppTextBodyText2Widget.defaultStyle("${widget._content}"),
+        AppTextBodyText2Widget.defaultStyle(
+          data: "${widget._content}",
+        ),
       ],
     );
   }

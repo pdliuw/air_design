@@ -8,10 +8,10 @@ class AppDialogFactory {
   /// showAlertDialog
   static showAlertDialog(
     BuildContext context, {
-    String title,
-    String content,
-    VoidCallback cancel,
-    VoidCallback submit,
+    String? title,
+    String? content,
+    VoidCallback? cancel,
+    VoidCallback? submit,
   }) {
     showDialog(
       context: context,
@@ -44,11 +44,13 @@ class AppDialogFactory {
 
   ///
   /// 提示用户，并且支持用户点击
-  static showIKnowDialog(BuildContext context,
-      {String title,
-      String content,
-      VoidCallback cancel,
-      VoidCallback submit}) {
+  static showIKnowDialog(
+    BuildContext context, {
+    String? title,
+    String? content,
+    VoidCallback? cancel,
+    VoidCallback? submit,
+  }) {
     showCupertinoDialog(
         context: context,
         builder: (context) {

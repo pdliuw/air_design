@@ -3,10 +3,10 @@ import 'package:air_design/src/config/card_config.dart';
 ///
 /// AppConfig
 class AppConfig {
-  static AppConfig _instance;
+  static AppConfig? _instance;
   AppConfig._();
 
-  static AppConfig instance() {
+  static AppConfig? instance() {
     if (_instance == null) {
       _instance = AppConfig._();
     }
@@ -23,7 +23,7 @@ class AppConfig {
 ///
 /// Config
 class Config {
-  CardConfig cardConfig;
+  CardConfig? cardConfig;
 
   Config({
     this.cardConfig,

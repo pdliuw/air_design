@@ -9,15 +9,13 @@ class AppSinglePickerHelperFactory {
   ///
   /// [show]
   static void showPickerPopup({
-    @required FixedExtentScrollController fixedExtentScrollController,
-    @required BuildContext context,
-    String title = '',
-    @required List<Widget> children,
-    VoidCallback onCancelCallback,
-    VoidCallback onConfirmCallback,
+    required FixedExtentScrollController fixedExtentScrollController,
+    required BuildContext context,
+    String? title = '',
+    required List<Widget> children,
+    VoidCallback? onCancelCallback,
+    VoidCallback? onConfirmCallback,
   }) {
-    assert(context != null);
-
     showCupertinoModalPopup(
         context: context,
         builder: (BuildContext dialogContext) {

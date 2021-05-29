@@ -5,21 +5,21 @@ import 'package:flutter/material.dart';
 /// AppTextBodyText1Widget
 // ignore: must_be_immutable
 class AppTextBodyText1Widget extends StatelessWidget {
-  String _label;
-  String _data;
-  AppTextBodyText1Widget.defaultStyle(
-    String data, {
-    Key key,
-    String label,
+  String? _label;
+  late String _data;
+  AppTextBodyText1Widget.defaultStyle({
+    required String data,
+    Key? key,
+    String? label,
   }) {
     _label = AppStringHelper.stringEmpty(label);
     _data = AppStringHelper.stringEmpty(data);
-    _data = _label + _data;
+    _data = "$_label" + _data;
   }
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
-    TextStyle bodyText1 = textTheme.bodyText1;
+    TextStyle? bodyText1 = textTheme.bodyText1;
     return Text(
       _data,
       key: key,

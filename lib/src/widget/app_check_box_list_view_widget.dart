@@ -8,17 +8,17 @@ typedef CheckboxListViewItemChanged = void Function(int index, bool checked);
 /// AppCheckBoxListViewWidget
 /// [CheckboxListViewItemChanged]
 class AppCheckBoxListViewWidget extends StatefulWidget {
-  List _list;
-  IndexedWidgetBuilder _labelWidgetBuilder;
-  bool _isVertical;
-  ValueChanged<bool> _checkAllChanged;
-  CheckboxListViewItemChanged _checkboxListViewItemChanged;
-  Widget _titleWidget;
+  List? _list;
+  IndexedWidgetBuilder? _labelWidgetBuilder;
+  late bool _isVertical;
+  ValueChanged<bool>? _checkAllChanged;
+  CheckboxListViewItemChanged? _checkboxListViewItemChanged;
+  Widget? _titleWidget;
   AppCheckBoxListViewWidget.defaultStyle({
-    @required List list,
-    @required IndexedWidgetBuilder labelBuilder,
-    CheckboxListViewItemChanged itemChanged,
-    ValueChanged<bool> checkAllChanged,
+    List? list,
+    IndexedWidgetBuilder? labelBuilder,
+    CheckboxListViewItemChanged? itemChanged,
+    ValueChanged<bool>? checkAllChanged,
     String titleName = '',
     bool vertical = true,
   }) {
@@ -39,25 +39,25 @@ class _AppCheckBoxListViewWidgetState extends State<AppCheckBoxListViewWidget> {
   _getContentWidget() {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: widget._list.length,
+      itemCount: widget._list!.length,
       scrollDirection: widget._isVertical ? Axis.vertical : Axis.horizontal,
       physics: BouncingScrollPhysics(),
       itemBuilder: (context, index) {
-        dynamic itemData = widget._list[index];
+        dynamic itemData = widget._list![index];
 
         return Row(
           children: <Widget>[
             Checkbox(
               value: itemData['checked'],
-              onChanged: (bool checked) {
+              onChanged: (bool? checked) {
                 print(checked);
                 setState(() {
-                  itemData['checked'] = checked;
-                  widget._checkboxListViewItemChanged(index, checked);
+                  itemData['checked'] = checked!;
+                  widget._checkboxListViewItemChanged!(index, checked);
                 });
               },
             ),
-            widget._labelWidgetBuilder(context, index),
+            widget._labelWidgetBuilder!(context, index),
           ],
         );
       },
@@ -68,7 +68,7 @@ class _AppCheckBoxListViewWidgetState extends State<AppCheckBoxListViewWidget> {
   void initState() {
     super.initState();
     //init checked status
-    widget._list.forEach((element) {
+    widget._list!.forEach((element) {
       element['checked'] = element['checked'] ?? false;
     });
   }
@@ -101,24 +101,24 @@ class _AppCheckBoxListViewWidgetState extends State<AppCheckBoxListViewWidget> {
           onChanged: (checkedAllValue) {
             setState(() {
               if (checkedAllValue != null) {
-                widget._checkAllChanged(checkedAllValue);
-                widget._list.forEach((element) {
+                widget._checkAllChanged!(checkedAllValue);
+                widget._list!.forEach((element) {
                   element['checked'] = checkedAllValue;
                 });
               }
             });
           },
         ),
-        widget._titleWidget,
+        widget._titleWidget!,
       ],
     );
   }
 
   bool _checkAllValue() {
-    int totalNumber = widget._list.length;
+    int totalNumber = widget._list!.length;
     int checkedNumber = 0;
 
-    widget._list.forEach((element) {
+    widget._list!.forEach((element) {
       bool checked = element['checked'] ?? false;
       if (checked) {
         checkedNumber++;

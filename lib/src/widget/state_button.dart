@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 
 /// StateButton
+// ignore: must_be_immutable
 class StateButton extends StatefulWidget {
-  Widget _child;
-  VoidCallback _onPressed;
-  bool _isLoading;
-  Color _color;
-  double _height;
-  double _width;
-  Duration _duration;
+  late Widget _child;
+  VoidCallback? _onPressed;
+  bool? _isLoading;
+  Color? _color;
+  double? _height;
+  double? _width;
+  Duration? _duration;
   StateButton({
-    @required Widget child,
-    bool isLoading = false,
-    VoidCallback onPressed,
-    Color color,
-    double width = 300,
-    double height = 20,
-    Duration duration = const Duration(milliseconds: 300),
+    required Widget child,
+    bool? isLoading = false,
+    VoidCallback? onPressed,
+    Color? color,
+    double? width = 300,
+    double? height = 20,
+    Duration? duration = const Duration(milliseconds: 300),
   }) {
     _child = child;
     _isLoading = isLoading;
@@ -39,20 +40,20 @@ class _StateButtonState extends State<StateButton> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (widget._isLoading) {
+        if (widget._isLoading!) {
           //加载中状态，不处理手势
         } else {
           //其他状态，处理手势
-          widget._onPressed();
+          widget._onPressed!();
         }
       },
       child: AnimatedContainer(
-        duration: widget._duration,
-        width: widget._isLoading ? 100 : 200,
-        height: widget._isLoading ? 50 : 50,
+        duration: widget._duration!,
+        width: widget._isLoading! ? 100 : 200,
+        height: widget._isLoading! ? 50 : 50,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(widget._isLoading ? 45 : 10),
-          color: widget._isLoading
+          borderRadius: BorderRadius.circular(widget._isLoading! ? 45 : 10),
+          color: widget._isLoading!
               ? Theme.of(context).disabledColor
               : widget._color ?? Theme.of(context).primaryColor,
         ),
@@ -60,7 +61,7 @@ class _StateButtonState extends State<StateButton> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            widget._isLoading ? CircularProgressIndicator() : widget._child,
+            widget._isLoading! ? CircularProgressIndicator() : widget._child,
           ],
         ),
       ),

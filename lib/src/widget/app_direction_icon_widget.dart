@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class AppDirectionIconWidget extends StatelessWidget {
   ///
   /// [AppDirectionIconArrow]
-  static AppDirectionIconArrow _appDirectionIconArrow;
+  static AppDirectionIconArrow? _appDirectionIconArrow;
 
   ///
   /// [defaultStyle]

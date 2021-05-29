@@ -4,27 +4,29 @@ import 'package:flutter/material.dart';
 ///
 /// AppCalendarInputWidget
 class AppCalendarInputWidget extends StatefulWidget {
-  VoidCallback _callback;
-  Widget _hintChild;
-  bool _enable;
-  double _width;
+  late VoidCallback _callback;
+  Widget? _hintChild;
+  bool? _enable;
+  double? _width;
   AppCalendarInputWidget.defaultStyle({
-    VoidCallback voidCallback,
-    String hint = '',
-    bool enable = true,
-    double width = 200,
+    VoidCallback? voidCallback,
+    String? hint = '',
+    bool? enable = true,
+    double? width = 200,
   }) {
     _enable = enable;
     _callback = voidCallback ?? () {};
     _width = width;
     _hintChild = Container(
       width: width,
-      child: AppTextBodyText2Widget.defaultStyle(hint),
+      child: AppTextBodyText2Widget.defaultStyle(
+        data: "$hint",
+      ),
     );
   }
 
   AppCalendarInputWidget.expandedStyle({
-    VoidCallback voidCallback,
+    VoidCallback? voidCallback,
     String hint = '',
     bool enable = true,
     double width = 200,
@@ -33,7 +35,9 @@ class AppCalendarInputWidget extends StatefulWidget {
     _callback = voidCallback ?? () {};
     _width = width;
     _hintChild = Expanded(
-      child: AppTextBodyText2Widget.defaultStyle(hint),
+      child: AppTextBodyText2Widget.defaultStyle(
+        data: "$hint",
+      ),
     );
   }
   @override
@@ -57,8 +61,8 @@ class _AppCalendarInputState extends State<AppCalendarInputWidget> {
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
             side: BorderSide(
-              color: widget._enable ? Colors.grey : Colors.grey[400],
-              width: widget._enable ? 1 : 0.5,
+              color: widget._enable! ? Colors.grey : Colors.grey[400]!,
+              width: widget._enable! ? 1 : 0.5,
             ),
             borderRadius: BorderRadius.circular(1),
           ),
@@ -66,7 +70,7 @@ class _AppCalendarInputState extends State<AppCalendarInputWidget> {
         child: Row(
           children: <Widget>[
             Expanded(
-              child: widget._hintChild,
+              child: widget._hintChild!,
             ),
             Icon(Icons.calendar_today),
           ],

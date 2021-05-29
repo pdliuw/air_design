@@ -3,24 +3,25 @@ import 'package:flutter/material.dart';
 
 ///
 /// AppOneLevelWidget
+// ignore: must_be_immutable
 class AppOneLevelWidget extends StatefulWidget {
-  String _label;
-  List<String> _values;
+  String? _label;
+  List<String>? _values;
 
-  int _leftFlex, _rightFlex;
+  int? _leftFlex, _rightFlex;
 
-  ValueChanged<String> onChanged;
+  ValueChanged<String>? onChanged;
 
-  bool _isDense;
+  bool? _isDense;
 
   ///
   /// DefaultStyle
   AppOneLevelWidget.defaultStyle({
-    List<String> values,
-    String label,
-    int leftFlex = 1,
-    int rightFlex = 1,
-    bool isDense = true,
+    List<String>? values,
+    String? label,
+    int? leftFlex = 1,
+    int? rightFlex = 1,
+    bool? isDense = true,
     this.onChanged,
   }) {
     _values = values;
@@ -35,12 +36,12 @@ class AppOneLevelWidget extends StatefulWidget {
 }
 
 class _AppOneLevelWidgetState extends State<AppOneLevelWidget> {
-  String _oneLevelValue;
+  String? _oneLevelValue;
   @override
   void initState() {
     super.initState();
 
-    _oneLevelValue = widget._values.elementAt(0);
+    _oneLevelValue = widget._values!.elementAt(0);
   }
 
   @override
@@ -49,27 +50,27 @@ class _AppOneLevelWidgetState extends State<AppOneLevelWidget> {
       children: <Widget>[
         Expanded(
           child: Container(),
-          flex: widget._leftFlex,
+          flex: widget._leftFlex!,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
-            AppTextBodyText1Widget.defaultStyle(widget._label)
+            AppTextBodyText1Widget.defaultStyle(data: "${widget._label}")
           ],
         ),
         Expanded(
           flex: 2,
           child: DropdownButton(
             isExpanded: true,
-            isDense: widget._isDense,
+            isDense: widget._isDense!,
             value: _oneLevelValue,
-            items: widget._values.map((item) {
+            items: widget._values!.map((item) {
               return DropdownMenuItem(
                 child: Scrollbar(
                     child: SingleChildScrollView(
                   physics: BouncingScrollPhysics(),
                   child: AppTextBodyText1Widget.defaultStyle(
-                    item,
+                    data: item,
                   ),
                 )),
                 value: item,
@@ -77,17 +78,17 @@ class _AppOneLevelWidgetState extends State<AppOneLevelWidget> {
             }).toList(),
             onChanged: (value) {
               if (widget.onChanged != null) {
-                widget.onChanged(value);
+                widget.onChanged!(value.toString());
               }
               setState(() {
-                _oneLevelValue = value; //一级
+                _oneLevelValue = value.toString(); //一级
               });
             },
           ),
         ),
         Expanded(
           child: Container(),
-          flex: widget._rightFlex,
+          flex: widget._rightFlex!,
         ),
       ],
     );

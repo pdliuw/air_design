@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 /// AppMultipleLineTextWidget
 // ignore: must_be_immutable
 class AppMultipleLineTextWidget extends StatelessWidget {
-  String _description;
-  TextAlign _textAlign;
+  late String _description;
+  late TextAlign _textAlign;
 
   ///
   /// Multiple line default style
   AppMultipleLineTextWidget.defaultStyle(
-      {String description, TextAlign textAlign = TextAlign.end}) {
+      {required String description, TextAlign textAlign = TextAlign.end}) {
     _description = description ?? '';
     _textAlign = textAlign;
   }

@@ -2,17 +2,21 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class AppCircleAvatarDotWidget extends StatelessWidget {
-  Color _dotColor;
-  double _dotDiameter;
-  double _size;
-  String _tooltip;
+  Color? _dotColor;
+  late double _dotDiameter;
+  late double _size;
+  String? _tooltip;
 
   AppCircleAvatarDotWidget({
-    String avatar,
+    required String avatar,
   }) {}
 
-  AppCircleAvatarDotWidget.defaultStyle(
-      {Color color, double size = 24, double diameter = 8, String tooltip}) {
+  AppCircleAvatarDotWidget.defaultStyle({
+    Color? color,
+    double size = 24,
+    double diameter = 8,
+    String? tooltip,
+  }) {
     _dotColor = color;
     _size = size;
     _dotDiameter = diameter;

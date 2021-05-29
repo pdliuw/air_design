@@ -4,21 +4,21 @@ import 'package:flutter/material.dart';
 ///
 /// AppStickyButtonWidget
 class AppStickyButtonWidget extends StatefulWidget {
-  String _beginName;
-  String _endName;
-  VoidCallback _beginTapCallback;
-  VoidCallback _endTapCallback;
-  bool _autoEnable;
-  bool _beginTapEnable;
-  bool _endTapEnable;
+  String? _beginName;
+  String? _endName;
+  VoidCallback? _beginTapCallback;
+  VoidCallback? _endTapCallback;
+  bool? _autoEnable;
+  bool? _beginTapEnable;
+  bool? _endTapEnable;
   AppStickyButtonWidget.defaultStyle({
-    String beginName,
-    String endName,
-    VoidCallback beginTapCallback,
-    VoidCallback endTapCallback,
-    bool autoEnable = false,
-    bool beginTapEnable = true,
-    bool endTapEnable = true,
+    String? beginName,
+    String? endName,
+    VoidCallback? beginTapCallback,
+    VoidCallback? endTapCallback,
+    bool? autoEnable = false,
+    bool? beginTapEnable = true,
+    bool? endTapEnable = true,
   }) {
     _beginName = beginName;
     _endName = endName;
@@ -47,11 +47,11 @@ class _StickyButtonState extends State<AppStickyButtonWidget> {
           child: GestureDetector(
             onTap: () {
               //whether: tap click enable
-              if (widget._beginTapEnable) {
+              if (widget._beginTapEnable!) {
                 //whether: tap callback enable
                 if (widget._beginTapCallback != null) {
                   //whether: tap autoEnable
-                  if (widget._autoEnable) {
+                  if (widget._autoEnable!) {
                     //update state
                     setState(() {
                       widget._beginTapEnable = false;
@@ -59,7 +59,7 @@ class _StickyButtonState extends State<AppStickyButtonWidget> {
                   }
 
                   //callback
-                  widget._beginTapCallback();
+                  widget._beginTapCallback!();
                 }
               } else {}
             },
@@ -74,7 +74,8 @@ class _StickyButtonState extends State<AppStickyButtonWidget> {
                 ),
               ),
               alignment: Alignment.center,
-              child: AppTextButtonWidget.defaultStyle("${widget._beginName}"),
+              child: AppTextButtonWidget.defaultStyle(
+                  data: "${widget._beginName}"),
             ),
           ),
         ),
@@ -83,11 +84,11 @@ class _StickyButtonState extends State<AppStickyButtonWidget> {
           child: GestureDetector(
             onTap: () {
               //whether: tap click enable
-              if (widget._endTapEnable) {
+              if (widget._endTapEnable!) {
                 //whether: tap callback enable
                 if (widget._endTapCallback != null) {
                   //whether: tap autoEnable
-                  if (widget._autoEnable) {
+                  if (widget._autoEnable!) {
                     //update state
                     setState(() {
                       widget._endTapEnable = false;
@@ -95,7 +96,7 @@ class _StickyButtonState extends State<AppStickyButtonWidget> {
                   }
 
                   //callback
-                  widget._endTapCallback();
+                  widget._endTapCallback!();
                 }
               } else {}
             },
@@ -114,7 +115,8 @@ class _StickyButtonState extends State<AppStickyButtonWidget> {
                 ),
               ),
               alignment: Alignment.center,
-              child: AppTextButtonWidget.defaultStyle("${widget._endName}"),
+              child:
+                  AppTextButtonWidget.defaultStyle(data: "${widget._endName}"),
             ),
           ),
         ),

@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 ///
 /// AppCountDownWidget
 class AppCountDownWidget extends StatefulWidget {
-  VoidCallback _onTap;
+  VoidCallback? _onTap;
 
   int intervalUnitSecond = 1;
   int timeMax = 30;
   int _currentTime = 30;
 
   AppCountDownWidget.defaultStyle({
-    @required VoidCallback onTap,
+    VoidCallback? onTap,
   }) {
     assert(onTap != null);
     _onTap = onTap;
@@ -27,7 +27,7 @@ class AppCountDownWidget extends StatefulWidget {
 ///
 /// _countDownState
 class _CountDownState extends State<AppCountDownWidget> {
-  Timer _timer;
+  Timer? _timer;
   @override
   void initState() {
     super.initState();
@@ -37,7 +37,7 @@ class _CountDownState extends State<AppCountDownWidget> {
     if (_timer == null) {
       return false;
     }
-    return _timer.isActive;
+    return _timer!.isActive;
   }
 
   void startCountDown() {
@@ -56,14 +56,14 @@ class _CountDownState extends State<AppCountDownWidget> {
 
   void cancel() {
     if (_timer != null) {
-      _timer.cancel();
+      _timer!.cancel();
       _timer = null;
     }
   }
 
   @override
   void dispose() {
-    _timer.cancel();
+    _timer?.cancel();
     _timer = null;
     super.dispose();
   }
@@ -78,7 +78,7 @@ class _CountDownState extends State<AppCountDownWidget> {
         onPressed: isActive
             ? null
             : () {
-                widget._onTap();
+                widget._onTap!();
                 startCountDown();
               },
         child: Text(

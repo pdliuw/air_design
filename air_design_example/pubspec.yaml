@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -30,7 +30,7 @@ dependencies:
   cupertino_icons: ^0.1.3
 
   # route package
-  airoute: ^1.0.0
+  airoute: ^2.2.0
 
   air_design:
     path: ../

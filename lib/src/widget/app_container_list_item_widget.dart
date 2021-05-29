@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 ///
 /// AppContainerListItemWidget
 class AppContainerListItemWidget extends StatefulWidget {
-  VoidCallback _onTapCallback;
-  Widget _child;
+  VoidCallback? _onTapCallback;
+  Widget? _child;
   AppContainerListItemWidget.defaultStyle({
-    @required Widget child,
-    VoidCallback onTapCallback,
+    Widget? child,
+    VoidCallback? onTapCallback,
   }) {
     assert(child != null);
     _child = child;

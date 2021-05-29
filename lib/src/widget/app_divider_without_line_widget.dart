@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 ///
 /// AppDividerWithoutLineWidget
 class AppDividerWithoutLineWidget extends StatelessWidget {
-  double _height;
+  late double _height;
   AppDividerWithoutLineWidget.defaultStyle({
     double height = 12,
   }) {

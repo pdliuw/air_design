@@ -3,26 +3,27 @@ import 'package:flutter/material.dart';
 
 ///
 /// AppMaterialButtonWidget
+// ignore: must_be_immutable
 class AppMaterialButtonWidget extends StatefulWidget {
-  VoidCallback _onTap;
-  Widget _child;
-  Color _color;
-  Color _textColor;
+  VoidCallback? _onTap;
+  Widget? _child;
+  Color? _color;
+  Color? _textColor;
 
   ///
   /// Whether auto enable after clicked
-  bool _autoEnable;
-  bool _tapEnable;
+  bool? _autoEnable;
+  bool? _tapEnable;
   AppMaterialButtonWidget.defaultStyle({
-    @required String text,
-    VoidCallback onTap,
-    Color color,
-    Color textColor,
-    bool autoEnable = false,
-    bool tapEnable = true,
+    required String text,
+    VoidCallback? onTap,
+    Color? color,
+    Color? textColor,
+    bool? autoEnable = false,
+    bool? tapEnable = true,
   }) {
     _child = AppTextBodyText1Widget.defaultStyle(
-      "$text",
+      data: "$text",
     );
     _onTap = onTap;
     _color = color;
@@ -31,12 +32,12 @@ class AppMaterialButtonWidget extends StatefulWidget {
     _tapEnable = tapEnable;
   }
   AppMaterialButtonWidget.child({
-    @required Widget child,
-    VoidCallback onTap,
-    Color color,
-    Color textColor,
-    bool autoEnable = false,
-    bool tapEnable = true,
+    required Widget child,
+    VoidCallback? onTap,
+    Color? color,
+    Color? textColor,
+    bool? autoEnable = false,
+    bool? tapEnable = true,
   }) {
     _child = child;
     _onTap = onTap;
@@ -55,21 +56,21 @@ class _AppMaterialButtonWidgetState extends State<AppMaterialButtonWidget> {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: () {
-        if (widget._tapEnable) {
+        if (widget._tapEnable!) {
           if (widget._onTap != null) {
-            if (widget._autoEnable) {
+            if (widget._autoEnable!) {
               //update state
               setState(() {
                 widget._tapEnable = false;
               });
             }
             //callback
-            widget._onTap();
+            widget._onTap!();
           }
         } else {}
       },
       child: widget._child,
-      color: widget._tapEnable
+      color: widget._tapEnable!
           ? widget._color ?? Theme.of(context).primaryColor
           : Colors.grey,
       textColor: widget._textColor ?? Colors.white,

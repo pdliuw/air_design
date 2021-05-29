@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 /// IconTextWidget
 // ignore: must_be_immutable
 class AppIconTextWidget extends StatelessWidget {
-  Widget _icon;
-  Widget _text;
+  Widget? _icon;
+  Widget? _text;
 
   double _iconMarginLeft = 5;
   double _textMarginLeft = 5;
@@ -13,8 +13,8 @@ class AppIconTextWidget extends StatelessWidget {
   ///
   /// constructor
   AppIconTextWidget({
-    Icon icon,
-    Text text,
+    Icon? icon,
+    Text? text,
   }) {
     _icon = icon;
     _text = text;
@@ -23,10 +23,10 @@ class AppIconTextWidget extends StatelessWidget {
   ///
   /// default style constructor
   AppIconTextWidget.defaultStyle(
-      {IconData iconData,
-      String description,
-      double iconSize,
-      Color iconColor = Colors.lightBlue}) {
+      {IconData? iconData,
+      String? description,
+      double? iconSize,
+      Color? iconColor = Colors.lightBlue}) {
     _icon = Icon(
       iconData,
       size: iconSize ?? 24,
@@ -37,7 +37,7 @@ class AppIconTextWidget extends StatelessWidget {
       _iconMarginLeft = 0;
       _textMarginLeft = 0;
     }
-    _text = Text(description);
+    _text = Text("$description");
   }
 
   @override

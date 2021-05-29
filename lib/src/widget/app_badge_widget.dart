@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 ///
 /// AppBadgeWidget
 class AppBadgeWidget extends StatefulWidget {
-  Widget _child;
+  Widget? _child;
 
   ///
   /// Default style
   AppBadgeWidget.defaultStyle({
-    @required Widget child,
+    Widget? child,
   }) {
     _child = child;
   }

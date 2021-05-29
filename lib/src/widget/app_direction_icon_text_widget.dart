@@ -6,13 +6,13 @@ import 'app_card_list_item_tip_widget.dart';
 /// AppDirectionIconTextWidget
 // ignore: must_be_immutable
 class AppDirectionIconTextWidget extends StatelessWidget {
-  String _description;
-  Color _iconColor;
-  num _iconNumber;
-  double _iconSize;
+  String? _description;
+  late Color _iconColor;
+  late num _iconNumber;
+  late double _iconSize;
   List<num> _iconNumberList = [];
   AppDirectionIconTextWidget.defaultStyle({
-    String description,
+    String? description,
     Color iconColor = Colors.blueGrey,
     double iconSize = 16,
     num iconNumber = 3,
@@ -45,7 +45,7 @@ class AppDirectionIconTextWidget extends StatelessWidget {
           width: 4,
         ),
         AppCardListItemTipWidget(
-          title: _description,
+          title: "$_description",
         ),
       ],
     );

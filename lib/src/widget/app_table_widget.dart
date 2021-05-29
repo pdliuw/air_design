@@ -5,20 +5,21 @@ import 'app_table_row_text_widget.dart';
 
 ///
 /// AppTableWidget
+// ignore: must_be_immutable
 class AppTableWidget extends StatefulWidget {
-  List<List<String>> _tabData;
-  String _titleName;
-  Widget _title;
-  Widget _child;
-  bool _showTitle;
-  bool _showPadding;
+  late List<List<String>> _tabData;
+  String? _titleName;
+  Widget? _title;
+  Widget? _child;
+  bool? _showTitle;
+  bool? _showPadding;
 
   AppTableWidget.defaultStyle({
-    @required List<List<String>> tableData,
-    String titleName,
-    Widget title,
-    bool showTitle = true,
-    bool showPadding = true,
+    required List<List<String>> tableData,
+    String? titleName,
+    Widget? title,
+    bool? showTitle = true,
+    bool? showPadding = true,
   }) {
     _tabData = tableData;
     _titleName = titleName;
@@ -28,10 +29,10 @@ class AppTableWidget extends StatefulWidget {
   }
 
   AppTableWidget.child({
-    @required List<List<String>> tableData,
-    String titleName,
-    Widget title,
-    Widget child,
+    required List<List<String>> tableData,
+    String? titleName,
+    Widget? title,
+    Widget? child,
   }) {
     _tabData = tableData;
     _titleName = titleName;
@@ -50,16 +51,16 @@ class _TableState extends State<AppTableWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(widget._showPadding ? 16 : 0),
+      padding: EdgeInsets.all(widget._showPadding! ? 16 : 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          widget._showTitle
+          widget._showTitle!
               ? Column(
                   children: <Widget>[
                     widget._title ??
                         AppTextHeadline6Widget.defaultStyle(
-                          "${widget._titleName}",
+                          data: "${widget._titleName}",
                         ),
                     Padding(
                         padding: EdgeInsets.only(

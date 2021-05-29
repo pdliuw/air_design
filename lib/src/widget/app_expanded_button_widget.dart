@@ -2,24 +2,25 @@ import 'package:flutter/material.dart';
 
 ///
 /// AppExpandedButtonWidget
+// ignore: must_be_immutable
 class AppExpandedButtonWidget extends StatefulWidget {
-  VoidCallback _voidCallback;
-  String _text;
-  int _leftFlex;
-  int _rightFlex;
-  int _centerFlex;
-  Color _color;
-  Color _textColor;
+  VoidCallback? _voidCallback;
+  String? _text;
+  late int _leftFlex;
+  late int _rightFlex;
+  late int _centerFlex;
+  Color? _color;
+  Color? _textColor;
 
   ///
   /// Whether auto enable after clicked
-  bool _autoEnable;
-  bool _tapEnable;
+  late bool _autoEnable;
+  late bool _tapEnable;
   AppExpandedButtonWidget.defaultStyle({
-    @required VoidCallback onTap,
-    @required String text,
-    Color color,
-    Color textColor,
+    VoidCallback? onTap,
+    String? text,
+    Color? color,
+    Color? textColor,
     bool autoEnable = false,
     bool tapEnable = true,
     int leftFlex = 1,
@@ -71,7 +72,7 @@ class _ExpandedButton extends State<AppExpandedButtonWidget> {
                       });
                     }
                     //callback
-                    widget._voidCallback();
+                    widget._voidCallback!();
                   }
                 } else {}
               },

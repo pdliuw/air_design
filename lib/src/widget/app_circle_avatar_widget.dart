@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class AppCircleAvatarWidget extends StatelessWidget {
-  String _avatarString;
-  String _tooltip;
+  String? _avatarString;
+  String? _tooltip;
 
   AppCircleAvatarWidget({
-    String avatar,
+    required String avatar,
   }) {}
 
-  AppCircleAvatarWidget.defaultStyle({String avatarString, String tooltip}) {
+  AppCircleAvatarWidget.defaultStyle({
+    String? avatarString,
+    String? tooltip,
+  }) {
     _avatarString = avatarString;
     _tooltip = tooltip;
   }
@@ -17,7 +20,7 @@ class AppCircleAvatarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Tooltip(
-      message: _tooltip,
+      message: "$_tooltip",
       child: CircleAvatar(
         child: Text(
           "${_getAvatar()}",

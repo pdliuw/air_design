@@ -4,28 +4,28 @@ import 'package:flutter/material.dart';
 ///
 /// AppInputFieldWidget
 class AppInputFieldWidget extends StatefulWidget {
-  bool _enable;
+  late bool _enable;
 
   ///
   /// label
-  String _label;
+  late String _label;
 
   ///
   /// hint
-  String _hint;
+  late String _hint;
 
-  int _leftFlex, _centerFlex, _rightFlex;
+  late int _leftFlex, _centerFlex, _rightFlex;
 
-  ValueChanged<String> _onChanged;
+  ValueChanged<String>? _onChanged;
 
   AppInputFieldWidget.defaultStyle({
     bool inputEnable = true,
-    String label,
-    String hint,
+    String label = '',
+    String hint = '',
     int leftFlex = 1,
     int centerFlex = 2,
     int rightFlex = 1,
-    ValueChanged<String> onChanged,
+    ValueChanged<String>? onChanged,
   }) {
     _enable = inputEnable;
     _label = label;
@@ -51,7 +51,7 @@ class _AppInputFieldWidgetState extends State<AppInputFieldWidget> {
           child: Container(),
           flex: widget._leftFlex,
         ),
-        AppTextBodyText2Widget.defaultStyle("${widget._label}"),
+        AppTextBodyText2Widget.defaultStyle(data: "${widget._label}"),
         Expanded(
           flex: widget._centerFlex,
           child: TextField(

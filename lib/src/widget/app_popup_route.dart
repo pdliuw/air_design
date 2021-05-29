@@ -3,22 +3,22 @@ import 'package:flutter/material.dart';
 ///
 /// AppDialogRoute
 class AppPopupRoute extends PopupRoute {
-  RoutePageBuilder _pageBuilder;
-  Color _barrierColor;
-  bool _barrierDismissible;
-  String _barrierLabel;
-  Duration _transitionDuration;
-  RouteTransitionsBuilder _transitionsBuilder;
-  RouteSettings _settings;
+  late RoutePageBuilder _pageBuilder;
+  Color? _barrierColor;
+  bool? _barrierDismissible;
+  String? _barrierLabel;
+  Duration? _transitionDuration;
+  RouteTransitionsBuilder? _transitionsBuilder;
+  RouteSettings? _settings;
 
   AppPopupRoute({
-    @required RoutePageBuilder pageBuilder,
-    bool barrierDismissible = true,
-    String barrierLabel,
-    Color barrierColor = const Color(0x80000000),
-    Duration transitionDuration = const Duration(milliseconds: 200),
-    RouteTransitionsBuilder transitionBuilder,
-    RouteSettings settings,
+    required RoutePageBuilder pageBuilder,
+    bool? barrierDismissible = true,
+    String? barrierLabel,
+    Color? barrierColor = const Color(0x80000000),
+    Duration? transitionDuration = const Duration(milliseconds: 200),
+    RouteTransitionsBuilder? transitionBuilder,
+    RouteSettings? settings,
   }) {
     _pageBuilder = pageBuilder;
     _barrierDismissible = barrierDismissible;
@@ -30,13 +30,13 @@ class AppPopupRoute extends PopupRoute {
   }
 
   @override
-  Color get barrierColor => _barrierColor;
+  Color get barrierColor => _barrierColor!;
 
   @override
-  bool get barrierDismissible => _barrierDismissible;
+  bool get barrierDismissible => _barrierDismissible!;
 
   @override
-  String get barrierLabel => _barrierLabel;
+  String get barrierLabel => _barrierLabel!;
 
   @override
   Widget buildPage(BuildContext context, Animation<double> animation,
@@ -59,9 +59,9 @@ class AppPopupRoute extends PopupRoute {
           ),
           child: child);
     } // Some default transition
-    return _transitionsBuilder(context, animation, secondaryAnimation, child);
+    return _transitionsBuilder!(context, animation, secondaryAnimation, child);
   }
 
   @override
-  Duration get transitionDuration => _transitionDuration;
+  Duration get transitionDuration => _transitionDuration!;
 }

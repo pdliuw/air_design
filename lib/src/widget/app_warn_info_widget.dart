@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 /// 提示/警告组件
 /// 用于提示重要信息、不可逆信息
 class AppWarnInfoWidget extends StatefulWidget {
-  final String data;
-  final Color color;
+  late final String data;
+  late final Color color;
 
   ///
   /// default
   AppWarnInfoWidget.defaultStyle({
-    @required this.data,
+    required this.data,
     this.color = Colors.red,
   }) {}
   @override
@@ -28,7 +28,7 @@ class _AppWarnInfoWidgetState extends State<AppWarnInfoWidget> {
           Icons.info_outline,
           color: widget.color,
         ),
-        AppTextBodyText1Widget.defaultStyle(widget.data),
+        AppTextBodyText1Widget.defaultStyle(data: "${widget.data}"),
       ],
     );
   }

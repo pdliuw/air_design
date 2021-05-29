@@ -5,37 +5,37 @@ import 'package:flutter/material.dart';
 class AppCircleButtonWidget extends StatefulWidget {
   ///
   /// Click listener
-  VoidCallback _onTapUp;
+  VoidCallback? _onTapUp;
 
   ///
   /// Animation duration
-  Duration _duration;
+  Duration? _duration;
 
   ///
   /// Outer ring color
-  Color _outerRingColor;
+  Color? _outerRingColor;
 
   ///
   /// Outer ring width
-  double _outerRingWidth;
+  double? _outerRingWidth;
 
   ///
   /// Circle fill color
-  Color _fillColor;
+  Color? _fillColor;
 
   ///
   /// Circle fill diameter
-  double _diameter;
+  double? _diameter;
 
   ///
   /// default style
   AppCircleButtonWidget.defaultStyle({
-    VoidCallback onTapUp,
+    VoidCallback? onTapUp,
     Duration duration = const Duration(seconds: 1),
     double diameter = 80,
     Color fillColor = Colors.green,
-    Color outerRingColor,
-    double outerRingWidth,
+    Color? outerRingColor,
+    double? outerRingWidth,
   }) {
     assert(duration != null);
     _onTapUp = onTapUp;
@@ -59,8 +59,8 @@ class AppCircleButtonWidget extends StatefulWidget {
 /// _CircleButtonState
 class _CircleButtonState extends State<AppCircleButtonWidget> {
   bool _pressed = false;
-  double _diameterPressed;
-  double _diameter;
+  double? _diameterPressed;
+  double? _diameter;
 
   ///
   /// Start pressed state
@@ -80,7 +80,7 @@ class _CircleButtonState extends State<AppCircleButtonWidget> {
 
   @override
   Widget build(BuildContext context) {
-    _diameterPressed = widget._diameter / 3 * 2;
+    _diameterPressed = widget._diameter! / 3 * 2;
     _diameter = widget._diameter;
     return GestureDetector(
       onTapDown: (TapDownDetails tapDownDetails) {
@@ -92,7 +92,7 @@ class _CircleButtonState extends State<AppCircleButtonWidget> {
         _onCancelPressed();
 
         //处理点击事件
-        widget._onTapUp();
+        widget._onTapUp!();
       },
       onTapCancel: () {
         //Restore state
@@ -110,7 +110,7 @@ class _CircleButtonState extends State<AppCircleButtonWidget> {
               ),
             ),
             curve: Curves.fastLinearToSlowEaseIn,
-            duration: widget._duration,
+            duration: widget._duration!,
             width: _pressed ? _diameterPressed : _diameter,
             height: _pressed ? _diameterPressed : _diameter,
             onEnd: () {
@@ -118,7 +118,7 @@ class _CircleButtonState extends State<AppCircleButtonWidget> {
               //开始旋转动画
             },
             child: Container(
-              margin: EdgeInsets.all(widget._outerRingWidth),
+              margin: EdgeInsets.all(widget._outerRingWidth!),
               decoration: ShapeDecoration(
                 color: widget._fillColor,
                 shape: CircleBorder(

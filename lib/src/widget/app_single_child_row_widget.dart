@@ -3,28 +3,29 @@ import 'package:flutter/material.dart';
 
 ///
 /// AppSingleChildRowWidget
+// ignore: must_be_immutable
 class AppSingleChildRowWidget extends StatefulWidget {
-  Widget _beginChild;
-  Widget _endChild;
+  Widget? _beginChild;
+  Widget? _endChild;
   int _leftFlex = 1;
   int _rightFlex = 2;
   AppSingleChildRowWidget.text({
-    @required String beginLabel,
-    @required String endLabel,
+    required String beginLabel,
+    required String endLabel,
     int leftFlex = 1,
     int rightFlex = 2,
   }) {
-    _beginChild = AppTextHeadline1Widget.defaultStyle("$beginLabel");
-    _endChild = AppTextHeadline1Widget.defaultStyle("$endLabel");
+    _beginChild = AppTextHeadline1Widget.defaultStyle(data: "$beginLabel");
+    _endChild = AppTextHeadline1Widget.defaultStyle(data: "$endLabel");
     _leftFlex = leftFlex;
     _rightFlex = rightFlex;
   }
   AppSingleChildRowWidget.textWithImage({
-    @required String beginLabel,
+    required String beginLabel,
     int leftFlex = 1,
     int rightFlex = 2,
   }) {
-    _beginChild = AppTextHeadline1Widget.defaultStyle("$beginLabel");
+    _beginChild = AppTextHeadline1Widget.defaultStyle(data: "$beginLabel");
     _endChild = Image.asset(
       "assets/images/emp_image.png",
       width: 24,
@@ -35,32 +36,32 @@ class AppSingleChildRowWidget extends StatefulWidget {
   }
 
   AppSingleChildRowWidget.upload({
-    @required String beginLabel,
+    required String beginLabel,
     int leftFlex = 1,
     int rightFlex = 2,
   }) {
-    _beginChild = AppTextHeadline1Widget.defaultStyle("$beginLabel");
+    _beginChild = AppTextHeadline1Widget.defaultStyle(data: "$beginLabel");
     _endChild = OutlineButton.icon(
         onPressed: () {},
         icon: Icon(Icons.file_upload),
-        label: AppTextHeadline1Widget.defaultStyle("上传"));
+        label: AppTextHeadline1Widget.defaultStyle(data: "上传"));
     _leftFlex = leftFlex;
     _rightFlex = rightFlex;
   }
   AppSingleChildRowWidget.textWithChild({
-    @required String beginLabel,
-    @required Widget endChild,
+    required String beginLabel,
+    required Widget endChild,
     int leftFlex = 1,
     int rightFlex = 2,
   }) {
-    _beginChild = AppTextHeadline1Widget.defaultStyle("$beginLabel");
+    _beginChild = AppTextHeadline1Widget.defaultStyle(data: "$beginLabel");
     _endChild = endChild;
     _leftFlex = leftFlex;
     _rightFlex = rightFlex;
   }
   AppSingleChildRowWidget.widget({
-    @required Widget beginChild,
-    @required Widget endChild,
+    required Widget beginChild,
+    required Widget endChild,
   }) {
     _beginChild = beginChild;
     _endChild = endChild;
@@ -82,7 +83,7 @@ class _AppSingleChildRowWidgetState extends State<AppSingleChildRowWidget> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  widget._beginChild,
+                  widget._beginChild!,
                 ],
               ),
               flex: widget._leftFlex,
@@ -90,7 +91,7 @@ class _AppSingleChildRowWidgetState extends State<AppSingleChildRowWidget> {
             Expanded(
               child: Row(
                 children: <Widget>[
-                  widget._endChild,
+                  widget._endChild!,
                 ],
               ),
               flex: widget._rightFlex,

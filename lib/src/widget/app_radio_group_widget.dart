@@ -6,16 +6,16 @@ typedef AppRadioGroupCallback = Function(bool checked);
 /// AppRadioGroupWidget
 
 class AppRadioGroupWidget extends StatefulWidget {
-  bool _checked;
-  AppRadioGroupCallback _radioGroupCallback;
-  Widget _leftWidget;
-  Widget _rightWidget;
+  late bool _checked;
+  late AppRadioGroupCallback _radioGroupCallback;
+  Widget? _leftWidget;
+  Widget? _rightWidget;
 
   AppRadioGroupWidget.defaultStyle({
-    @required bool checked,
-    @required AppRadioGroupCallback radioGroupCallback,
-    String leftLabel = "正常",
-    String rightLabel = "异常",
+    required bool checked,
+    required AppRadioGroupCallback radioGroupCallback,
+    String? leftLabel = "正常",
+    String? rightLabel = "异常",
   }) {
     _checked = checked;
     _radioGroupCallback = radioGroupCallback;
@@ -48,14 +48,14 @@ class _RadioGroupState extends State<AppRadioGroupWidget> {
               Radio(
                 value: true,
                 groupValue: widget._checked,
-                onChanged: (bool value) {
+                onChanged: (bool? value) {
                   setState(() {
-                    widget._checked = value;
+                    widget._checked = value!;
                     _callback();
                   });
                 },
               ),
-              widget._leftWidget,
+              widget._leftWidget!,
             ],
           ),
         ),
@@ -71,14 +71,14 @@ class _RadioGroupState extends State<AppRadioGroupWidget> {
               Radio(
                 value: false,
                 groupValue: widget._checked,
-                onChanged: (bool value) {
+                onChanged: (bool? value) {
                   setState(() {
-                    widget._checked = value;
+                    widget._checked = value!;
                     _callback();
                   });
                 },
               ),
-              widget._rightWidget,
+              widget._rightWidget!,
             ],
           ),
         ),

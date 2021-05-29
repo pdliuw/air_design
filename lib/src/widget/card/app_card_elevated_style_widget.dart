@@ -6,14 +6,14 @@ import 'app_card_outlined_style_widget.dart';
 /// AppCardElevatedStyleWidget
 // ignore: must_be_immutable
 class AppCardElevatedStyleWidget extends StatefulWidget {
-  Widget _child;
-  GestureTapCallback _tapCallback;
-  BorderRadiusGeometry _borderRadius;
-  bool _checked;
+  Widget? _child;
+  GestureTapCallback? _tapCallback;
+  BorderRadius? _borderRadius;
+  bool? _checked;
   AppCardElevatedStyleWidget.defaultStyle({
-    Widget child,
-    GestureTapCallback onTap,
-    BorderRadiusGeometry borderRadius,
+    Widget? child,
+    GestureTapCallback? onTap,
+    BorderRadius? borderRadius,
     bool checked = false,
   }) {
     _child = child;
@@ -33,7 +33,7 @@ class _AppCardOutlinedWidgetState extends State<AppCardElevatedStyleWidget> {
         borderRadius: widget._borderRadius,
         boxShadow: [
           BoxShadow(
-            color: Colors.grey[200],
+            color: Colors.grey[200]!,
             offset: Offset(1.0, 1.0),
             blurRadius: 5,
             spreadRadius: 2.0,

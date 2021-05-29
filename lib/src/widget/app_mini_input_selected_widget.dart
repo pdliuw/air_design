@@ -4,29 +4,30 @@ import 'package:flutter/material.dart';
 
 ///
 /// AppMiniInputSelectedWidget
+// ignore: must_be_immutable
 class AppMiniInputSelectedWidget extends StatefulWidget {
-  bool _enable;
-  ValueChanged<String> _onChanged;
-  String _value;
-  String _suffixText;
-  String _hintText;
-  double _maxHeight;
-  double _maxWidth;
-  Widget _icon;
-  VoidCallback _onTap;
+  bool? _enable;
+  ValueChanged<String>? _onChanged;
+  String? _value;
+  String? _suffixText;
+  String? _hintText;
+  double? _maxHeight;
+  double? _maxWidth;
+  Widget? _icon;
+  VoidCallback? _onTap;
 
   final TextEditingController _editingController =
       TextEditingController.fromValue(TextEditingValue(text: ""));
   AppMiniInputSelectedWidget.defaultStyle({
-    bool enable = true,
-    ValueChanged<String> onChanged,
-    String hintText = "请输入",
-    String value = "",
-    String suffixText = "",
-    double maxHeight = 35,
-    double maxWidth = 200,
-    Icon icon,
-    VoidCallback onTap,
+    bool? enable = true,
+    ValueChanged<String>? onChanged,
+    String? hintText = "请输入",
+    String? value = "",
+    String? suffixText = "",
+    double? maxHeight = 35,
+    double? maxWidth = 200,
+    Icon? icon,
+    VoidCallback? onTap,
   }) {
     _enable = enable;
     _onChanged = onChanged ?? (String value) {};
@@ -37,8 +38,8 @@ class AppMiniInputSelectedWidget extends StatefulWidget {
     _maxWidth = maxWidth;
     _icon = icon ?? Icon(Icons.arrow_drop_down);
     _onTap = onTap;
-    _editingController.text = value;
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    _editingController.text = "$value";
+    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
       _editingController.selection = TextSelection(
           baseOffset: _editingController.text.length,
           extentOffset: _editingController.text.length);
@@ -67,7 +68,7 @@ class _State extends State<AppMiniInputSelectedWidget> {
             children: <Widget>[
               ConstrainedBox(
                 constraints: BoxConstraints(
-                    maxHeight: widget._maxHeight, maxWidth: widget._maxWidth),
+                    maxHeight: widget._maxHeight!, maxWidth: widget._maxWidth!),
                 child: TextField(
                   controller: widget._editingController,
                   style: TextStyle().copyWith(
@@ -75,7 +76,7 @@ class _State extends State<AppMiniInputSelectedWidget> {
                   ),
                   onChanged: widget._onChanged,
                   decoration: InputDecoration(
-                    enabled: widget._enable,
+                    enabled: widget._enable!,
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(0),
                         borderSide: BorderSide(

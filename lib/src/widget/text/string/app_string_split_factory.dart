@@ -12,8 +12,8 @@ class AppStringHelper {
   /// split:分割内容处理函数
   /// splitText:分割文本
   static String splitComma({
-    @required List splitList,
-    @required dynamic Function(dynamic element) split,
+    required List splitList,
+    required dynamic Function(dynamic element) split,
     String splitText = ",",
   }) {
     if (splitList == null) return "";
@@ -95,7 +95,7 @@ class AppStringHelper {
   ///
   /// System Name(android iOS ...)
   static String systemName({
-    @required BuildContext context,
+    required BuildContext context,
   }) {
     String systemName = "";
     TargetPlatform targetPlatform = Theme.of(context).platform;

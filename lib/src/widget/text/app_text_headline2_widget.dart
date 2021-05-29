@@ -5,21 +5,21 @@ import 'package:flutter/material.dart';
 /// AppTextHeadline2Widget
 // ignore: must_be_immutable
 class AppTextHeadline2Widget extends StatelessWidget {
-  String _label;
-  String _data;
-  AppTextHeadline2Widget.defaultStyle(
-    String data, {
-    Key key,
-    String label,
+  String? _label;
+  late String _data;
+  AppTextHeadline2Widget.defaultStyle({
+    required String data,
+    Key? key,
+    String? label,
   }) {
     _label = AppStringHelper.stringEmpty(label);
     _data = AppStringHelper.stringEmpty(data);
-    _data = _label + _data;
+    _data = "$_label" + "$_data";
   }
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
-    TextStyle headline2 = textTheme.headline2;
+    TextStyle? headline2 = textTheme.headline2;
     return Text(
       _data,
       key: key,

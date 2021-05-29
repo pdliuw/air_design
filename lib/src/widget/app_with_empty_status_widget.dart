@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 /// AppWithEmptyStatusWidget
 /// 待有空数据的样式组件
 class AppWithEmptyStatusWidget extends StatefulWidget {
-  dynamic _data;
-  WidgetBuilder _child;
-  VoidCallback _voidCallback;
+  late dynamic _data;
+  late WidgetBuilder _child;
+  VoidCallback? _voidCallback;
   AppWithEmptyStatusWidget.defaultStyle({
-    @required dynamic data,
-    @required WidgetBuilder child,
-    VoidCallback callback,
+    required dynamic data,
+    required WidgetBuilder child,
+    VoidCallback? callback,
   }) {
     _data = data;
     _child = child;
@@ -58,7 +58,7 @@ class _AppWithEmptyStatusWidgetState extends State<AppWithEmptyStatusWidget> {
     return OutlineButton.icon(
         onPressed: () {
           if (widget._voidCallback != null) {
-            widget._voidCallback();
+            widget._voidCallback!();
           }
         },
         icon: Icon(Icons.refresh),

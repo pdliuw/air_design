@@ -6,28 +6,29 @@ import 'package:flutter/services.dart';
 
 ///
 /// AppMiniInputWidget
+// ignore: must_be_immutable
 class AppMiniInputWidget extends StatefulWidget {
-  bool _enable;
-  ValueChanged<String> _onChanged;
-  String _suffixText;
-  String _hintText;
-  double _maxHeight;
-  double _maxWidth;
+  bool? _enable;
+  ValueChanged<String>? _onChanged;
+  String? _suffixText;
+  String? _hintText;
+  double? _maxHeight;
+  double? _maxWidth;
   TextEditingController _editingController =
       TextEditingController.fromValue(TextEditingValue(text: ""));
-  List<TextInputFormatter> _inputFormatter;
-  TextInputType _inputType;
+  List<TextInputFormatter>? _inputFormatter;
+  TextInputType? _inputType;
   AppMiniInputWidget.defaultStyle({
-    bool enable = true,
-    ValueChanged<String> onChanged,
-    String hintText = "请输入",
-    String value = "",
-    String suffixText = "",
-    double maxHeight = 35,
-    double maxWidth = 200,
-    List<TextInputFormatter> inputFormatter,
-    TextInputType inputType,
-    TextEditingController textEditingController,
+    bool? enable = true,
+    ValueChanged<String>? onChanged,
+    String? hintText = "请输入",
+    String? value = "",
+    String? suffixText = "",
+    double? maxHeight = 35,
+    double? maxWidth = 200,
+    List<TextInputFormatter>? inputFormatter,
+    TextInputType? inputType,
+    TextEditingController? textEditingController,
   }) {
     _inputFormatter = inputFormatter;
     _inputType = inputType;
@@ -36,7 +37,7 @@ class AppMiniInputWidget extends StatefulWidget {
         (String value) {
           print(value);
         };
-    _hintText = enable ? hintText : "";
+    _hintText = enable! ? hintText : "";
     _suffixText = suffixText;
     _maxHeight = maxHeight;
     _maxWidth = maxWidth;
@@ -44,7 +45,7 @@ class AppMiniInputWidget extends StatefulWidget {
       _editingController = textEditingController;
     }
     _editingController.text = AppStringHelper.stringEmpty(value);
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
       _editingController.selection = TextSelection(
           baseOffset: _editingController.text.length,
           extentOffset: _editingController.text.length);
@@ -68,7 +69,7 @@ class _AppMiniInputWidgetState extends State<AppMiniInputWidget> {
         children: <Widget>[
           ConstrainedBox(
             constraints: BoxConstraints(
-                maxHeight: widget._maxHeight, maxWidth: widget._maxWidth),
+                maxHeight: widget._maxHeight!, maxWidth: widget._maxWidth!),
             child: TextField(
               controller: widget._editingController,
               style: TextStyle().copyWith(
@@ -78,7 +79,7 @@ class _AppMiniInputWidgetState extends State<AppMiniInputWidget> {
               keyboardType: widget._inputType,
               onChanged: widget._onChanged,
               decoration: InputDecoration(
-                enabled: widget._enable,
+                enabled: widget._enable!,
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(0),
                     borderSide: BorderSide(

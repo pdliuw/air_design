@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 
 ///
 /// AppExpandedButtonCountDownWidget
+// ignore: must_be_immutable
 class AppExpandedButtonCountDownWidget extends StatefulWidget {
-  VoidCallback _onTap;
+  late final VoidCallback _onTap;
 
   int intervalUnitSecond = 1;
   int timeMax = 30;
   int _currentTime = 30;
 
   AppExpandedButtonCountDownWidget.defaultStyle({
-    @required VoidCallback onTap,
+    required VoidCallback onTap,
   }) {
-    assert(onTap != null);
     _onTap = onTap;
   }
 
@@ -27,7 +27,7 @@ class AppExpandedButtonCountDownWidget extends StatefulWidget {
 ///
 /// _countDownState
 class _CountDownState extends State<AppExpandedButtonCountDownWidget> {
-  Timer _timer;
+  Timer? _timer;
   @override
   void initState() {
     super.initState();
@@ -37,7 +37,7 @@ class _CountDownState extends State<AppExpandedButtonCountDownWidget> {
     if (_timer == null) {
       return false;
     }
-    return _timer.isActive;
+    return _timer!.isActive;
   }
 
   void startCountDown() {
@@ -56,7 +56,7 @@ class _CountDownState extends State<AppExpandedButtonCountDownWidget> {
 
   void cancel() {
     if (_timer != null) {
-      _timer.cancel();
+      _timer?.cancel();
       _timer = null;
     }
   }
@@ -64,7 +64,7 @@ class _CountDownState extends State<AppExpandedButtonCountDownWidget> {
   @override
   void dispose() {
     if (_timer != null) {
-      _timer.cancel();
+      _timer?.cancel();
       _timer = null;
     }
     super.dispose();

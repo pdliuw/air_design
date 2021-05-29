@@ -6,8 +6,8 @@ class AppTabBarFactory {
   ///
   /// Create tab bar of the whole application
   static TabBar createTabBar({
-    @required TabController controller,
-    List<String> tabTexts,
+    required TabController controller,
+    required List<String> tabTexts,
   }) {
     return TabBar(
       controller: controller,

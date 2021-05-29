@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 ///
 /// AppPopupTitleWidget
 class AppPopupTitleWidget extends StatelessWidget {
-  static String _title;
+  static late String _title;
 
   ///
   /// [AppPopupTitleWidget.defaultStyle]
   AppPopupTitleWidget.defaultStyle({
-    String title,
+    required String title,
   }) {
     _title = title;
   }

@@ -5,18 +5,18 @@ import 'package:flutter/painting.dart';
 /// AppCardListItemActionBorderButtonWidget
 // ignore: must_be_immutable
 class AppCardListItemActionBorderButtonWidget extends StatelessWidget {
-  String _text;
-  VoidCallback _onTap;
-  Color _borderColor;
-  Color _textColor;
-  double _borderRadius;
-  bool _showBorder;
+  String? _text;
+  VoidCallback? _onTap;
+  late Color _borderColor;
+  Color? _textColor;
+  late double _borderRadius;
+  late bool _showBorder;
 
   ///
   /// Default style
   AppCardListItemActionBorderButtonWidget.defaultStyle({
     String text = '',
-    VoidCallback onTap,
+    VoidCallback? onTap,
     Color borderColor = Colors.blue,
     Color textColor = Colors.white,
     double borderRadius = 10,

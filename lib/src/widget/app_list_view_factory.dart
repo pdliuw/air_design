@@ -6,10 +6,10 @@ class AppListViewFactory {
   ///
   /// Create builder's list view
   static createListViewBuilder({
-    @required int itemCount,
-    @required IndexedWidgetBuilder itemBuilder,
+    required int itemCount,
+    required IndexedWidgetBuilder itemBuilder,
     bool shrinkWrap = false,
-    double cacheExtent,
+    double? cacheExtent,
     bool vertical = true,
   }) {
     return ListView.builder(
@@ -25,9 +25,9 @@ class AppListViewFactory {
   ///
   /// Create reorder's list view
   static createReorderListView<T>({
-    @required BuildContext context,
-    @required List<T> list,
-    IndexedWidgetBuilder itemBuilder,
+    required BuildContext context,
+    required List<T> list,
+    required IndexedWidgetBuilder itemBuilder,
   }) {
     int index = 0;
     return ReorderableListView(

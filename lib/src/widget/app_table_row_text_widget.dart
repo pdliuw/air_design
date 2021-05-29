@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 
 ///
 /// AppTableRowTextWidget
+// ignore: must_be_immutable
 class AppTableRowTextWidget extends StatelessWidget {
-  String _description;
+  String? _description;
   AppTableRowTextWidget.defaultStyle({
-    String description,
+    String? description,
   }) {
     _description = description ?? "";
   }
@@ -15,7 +16,7 @@ class AppTableRowTextWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(8),
       child: AppTextBodyText2Widget.defaultStyle(
-        _description,
+        data: "$_description",
       ),
     );
   }

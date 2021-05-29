@@ -42,7 +42,8 @@ class _TestMainPageState extends State<TestMainPage> {
             child: Column(
               children: [
                 ListTile(
-                  title: AppTextBodyText2Widget.defaultStyle("${item['name']}"),
+                  title: AppTextBodyText2Widget.defaultStyle(
+                      data: "${item['name']}"),
                 ),
               ],
             ),

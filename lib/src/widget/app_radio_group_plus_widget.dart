@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 ///
 /// AppRadioGroupPlusWidget
 class AppRadioGroupPlusWidget extends StatefulWidget {
-  List _list;
-  IndexedWidgetBuilder _labelWidgetBuilder;
-  ValueChanged<int> _onChanged;
-  bool _isVertical;
+  late List _list;
+  late IndexedWidgetBuilder _labelWidgetBuilder;
+  ValueChanged<int>? _onChanged;
+  bool? _isVertical;
   AppRadioGroupPlusWidget.defaultStyle({
-    @required List list,
-    @required IndexedWidgetBuilder labelBuilder,
-    ValueChanged<int> onChanged,
-    bool vertical = true,
+    required List list,
+    required IndexedWidgetBuilder labelBuilder,
+    ValueChanged<int>? onChanged,
+    bool? vertical = true,
   }) {
     _list = list ?? [];
     _labelWidgetBuilder = labelBuilder;
@@ -29,14 +29,14 @@ class _RadioGroupWidgetState extends State<AppRadioGroupPlusWidget> {
     return ListView.builder(
       shrinkWrap: true,
       itemCount: widget._list.length,
-      scrollDirection: widget._isVertical ? Axis.vertical : Axis.horizontal,
+      scrollDirection: widget._isVertical! ? Axis.vertical : Axis.horizontal,
       physics: BouncingScrollPhysics(),
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
             setState(() {
               groupValue = index;
-              widget._onChanged(index);
+              widget._onChanged!(index);
             });
           },
           child: RawChip(
@@ -59,7 +59,7 @@ class _RadioGroupWidgetState extends State<AppRadioGroupPlusWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return widget._isVertical
+    return widget._isVertical!
         ? _getContentWidget()
         : Container(
 //            width: 200,

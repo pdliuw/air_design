@@ -1,3 +1,7 @@
+## [2.2.0]
+
+* Null safety
+
 ## [2.0.0]
 
 * improve structure

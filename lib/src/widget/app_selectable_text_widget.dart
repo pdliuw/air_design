@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 /// AppSelectableTextWidget
 // ignore: must_be_immutable
 class AppSelectableTextWidget extends StatelessWidget {
-  String _text;
+  late String _text;
 
   ///
   /// Default style constructor
   AppSelectableTextWidget.defaultStyle({
-    String text,
+    required String text,
   }) {
     _text = text;
   }
